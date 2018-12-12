@@ -1,0 +1,53 @@
+﻿<Window x:Class="Brefi.WpfApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Brefi.WpfApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="457.463" Width="1023.676" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="499*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl HorizontalAlignment="Left" Height="409" Margin="10,10,0,0" VerticalAlignment="Top" Width="996" Grid.ColumnSpan="3">
+            <TabItem Header="Brends">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="brends" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="361" Margin="10,10,0,0" VerticalAlignment="Top" Width="970" RowEditEnding="brends_RowEditEnding">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Name" />
+                            <DataGridTextColumn Binding="{Binding BriefInfo, UpdateSourceTrigger=PropertyChanged}" Header="BriefInfo" />
+                            <DataGridCheckBoxColumn Binding="{Binding IsDeleted, UpdateSourceTrigger=PropertyChanged}" Header="IsDeleted" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Equipment">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="equipments" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="361" Margin="10,10,0,0" VerticalAlignment="Top" Width="970" RowEditEnding="equipments_RowEditEnding">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding BrendId, UpdateSourceTrigger=PropertyChanged}" Header="BrendId" />
+                            <DataGridTextColumn Binding="{Binding ToolTypeId, UpdateSourceTrigger=PropertyChanged}" Header="ToolTypeId" />
+                            <DataGridTextColumn Binding="{Binding Price, UpdateSourceTrigger=PropertyChanged}" Header="Price" />
+                            <DataGridCheckBoxColumn Binding="{Binding IsDeleted, UpdateSourceTrigger=PropertyChanged}" Header="IsDeleted" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ToolTypes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="toolTypes" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="361" Margin="10,10,0,0" VerticalAlignment="Top" Width="970" RowEditEnding="toolTypes_RowEditEnding">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Name" />
+                            <DataGridTextColumn Binding="{Binding OptionsDescription, UpdateSourceTrigger=PropertyChanged}" Header="OptionsDescription" />
+                            <DataGridCheckBoxColumn Binding="{Binding IsDeleted, UpdateSourceTrigger=PropertyChanged}" Header="IsDeleted" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
