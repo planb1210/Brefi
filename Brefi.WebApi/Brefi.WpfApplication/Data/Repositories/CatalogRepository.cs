@@ -36,7 +36,7 @@ namespace Brefi.WpfApplication.Data.Repositories
             {
                 var last = updateRepository.GetLast();
                 var fullCatalog = GetFullCatalog(last);
-
+                //TODO error processing
                 allData = await webAPI.Update(fullCatalog, last.UpdateTime);
             }
 

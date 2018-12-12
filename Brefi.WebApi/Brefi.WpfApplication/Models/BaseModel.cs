@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Brefi.WpfApplication.Models
 {
-    public class Brend : BaseModel
+    public class BaseModel
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
 
-        public string BriefInfo { get; set; }
+        public DateTime UpdateTime { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

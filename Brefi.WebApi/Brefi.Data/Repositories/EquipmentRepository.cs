@@ -24,6 +24,19 @@ namespace Brefi.Data.Repositories
             return db.Equipments.ToList();
         }
 
+        public List<string> GetStringLines()
+        {
+            var equipments = db.Equipments.ToList();
+            var result = new List<string>();
+            foreach (var equipment in equipments)
+            {
+                var line = $"{equipment.Id},{equipment.Brend},{equipment.ToolTypeId},{equipment.Price},{equipment.UpdateTime},{equipment.IsDeleted}";
+
+                result.Add(line);
+            }
+            return result;
+        }
+
         public void AddOrUpdate(Equipment equipment)
         {
             var findEquipment = db.Equipments.Where(x => x.Id == equipment.Id).FirstOrDefault();

@@ -21,9 +21,9 @@ namespace Brefi.Services
         {
             return new FullCatalog
             {
-                Brends = brendRepository.GetLines(date),
-                ToolTypes = toolTypeRepository.GetLines(date),
-                Equipments = equipmentRepository.GetLines(date)
+                Brends = brendRepository.GetLines(date),                
+                Equipments = equipmentRepository.GetLines(date),
+                ToolTypes = toolTypeRepository.GetLines(date)
             };
         }
 
@@ -32,11 +32,21 @@ namespace Brefi.Services
             if (catalog != null)
             {
                 brendRepository.AddOrUpdateRange(catalog.Brends);
-                toolTypeRepository.AddOrUpdateRange(catalog.ToolTypes);
                 equipmentRepository.AddOrUpdateRange(catalog.Equipments);
+                toolTypeRepository.AddOrUpdateRange(catalog.ToolTypes);
             }
 
             return GetLines(date);
+        }
+
+        public string GetDBFile()
+        {
+            var rn = "\r\n";
+            var brends = string.Join(rn, brendRepository.GetStringLines());
+            var equipments = string.Join(rn, equipmentRepository.GetStringLines());
+            var toolTips = string.Join(rn, toolTypeRepository.GetStringLines());
+
+            return $"Brends{rn}{brends}{rn}Equipmqnt{rn}{equipments}{rn}ToolTips{rn}{toolTips}";
         }
     }
 }

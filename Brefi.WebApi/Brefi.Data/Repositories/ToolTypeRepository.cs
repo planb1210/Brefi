@@ -35,6 +35,20 @@ namespace Brefi.Data.Repositories
             return res;
         }
 
+        public List<string> GetStringLines()
+        {
+            List<string> res = new List<string>();
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    res.Add(line);
+                }
+            }
+            return res;
+        }
+
         public void AddOrUpdate(ToolType toolType)
         {
             var isEdit = false;

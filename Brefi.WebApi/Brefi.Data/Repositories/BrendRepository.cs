@@ -23,6 +23,19 @@ namespace Brefi.Data.Repositories
             return db.Brends.ToList();
         }
 
+        public List<string> GetStringLines()
+        {
+            List<Brend> brends = db.Brends.ToList();
+            var result = new List<string>();
+            foreach (var brend in brends)
+            {
+                var line = $"{brend.Id},{brend.Name},{brend.BriefInfo},{brend.UpdateTime},{brend.IsDeleted}";
+
+                result.Add(line);
+            }
+            return result;
+        }
+
         public void AddOrUpdate(Brend brend)
         {
             var findBrend = db.Brends.Where(x => x.Id == brend.Id).FirstOrDefault();
